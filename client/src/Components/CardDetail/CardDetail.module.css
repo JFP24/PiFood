@@ -1,0 +1,74 @@
+.container {
+  min-height: calc(108vh - 88px);
+  background-color: #ede0d4;
+}
+
+.info {
+  display: flex;
+  padding-left: 300px;
+  padding-top: 50px;
+}
+
+.info2 {
+  border: solid black 3px;
+  position: relative;
+  top: 100px;
+  padding: 50px;
+  background-color: #ddb892;
+}
+
+.info3 {
+  position: relative;
+  width: 40%;
+  border: solid black 3px;
+  top: 100px;
+  padding: 20px;
+  background-color: #ddb892;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  border: solid 3px black;
+  border-radius: 20px;
+}
+
+.score {
+  font-weight: 700;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.diets {
+  font-weight: 700;
+  font-size: 25px;
+  width: 550px;
+}
+
+.dishTypes {
+  font-weight: 700;
+  font-size: 25px;
+  width: 550px;
+}
+
+.button {
+  background-color: #ddb892;
+  padding: 20px;
+  display: flex;
+  position: relative;
+  right: 800px;
+  border: solid black 3px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #ede0d4;
+  transition: all 0.5s;
+}

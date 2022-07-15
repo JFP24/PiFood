@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  min-height: calc(114vh - 88px);
+  background-size: 100% 100%;
+}
+.todo {
+  background-color: rgb(150, 150, 150);
+  padding: 100px;
+  border-radius: 20px;
+  opacity: 0.9;
+  border: solid black 2px;
+}
+.error {
+  color: red;
+}
+.label {
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.form {
+  padding: 50px;
+  border: solid 3px black;
+  border-radius: 20px;
+}
