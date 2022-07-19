@@ -4,7 +4,7 @@ const axios = require("axios");
 const { Diet, Recipe } = require("../db");
 const router = Router();
 router.use(express.json());
-const API_KEY = "b4660225499a45b9bb7165c54c3a45af";
+const API_KEY = "30bbb84e20454f608f82f0e2b6f30eb1";
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -14,7 +14,7 @@ router.get("/recipes", async (req, res) => {
   try {
     if (!name) {
       const infoApi = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=30`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=20`
       );
       //traemos la informacion de la api
       let infoRecipes = infoApi.data.results.map((data) => {

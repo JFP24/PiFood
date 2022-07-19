@@ -29,7 +29,7 @@ export const CardDetail = () => {
                 className={styles.image}
                 src={
                   details.image ||
-                  "https://i.blogs.es/7cee91/recetas-caseras-verano/450_1000.webp"
+                  "https://s1.eestatic.com/2015/03/31/cocinillas/cocinillas_22257914_116018277_1706x960.jpg"
                 }
                 alt=""
               />
@@ -49,7 +49,7 @@ export const CardDetail = () => {
               {" "}
               DishTypes:
               <br />
-              {details.dishTypes.join(" - ")}
+              {details.dishTypes}
             </div>
           </div>
 

@@ -7,11 +7,11 @@ export const NavBar = () => {
   return (
     <div className={styles.container}>
       <div>
-        <div>FOOD</div>
+        <div className={styles.food}>FOOD</div>
       </div>
 
       <Link to={"/CreateFood"}>
-        <button>CrearReceta</button>
+        <button className={styles.crear}>CrearReceta</button>
       </Link>
     </div>
   );

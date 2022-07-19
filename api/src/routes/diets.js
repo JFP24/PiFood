@@ -15,7 +15,7 @@ router.get("/diets", async (req, res) => {
       `${URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
     );
     let apiDiets = apiInfo.data.results.map((el) => el.diets);
-    apiDiets = [...new Set(apiDiets.flat()), "Vegetarian"];
+    apiDiets = [...new Set(apiDiets.flat()), "vegetarian"];
     apiDiets.map((e) => {
       return Diet.findOrCreate({ where: { name: e } });
     });

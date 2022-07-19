@@ -16,7 +16,7 @@ export const Home = () => {
   const [foodPerPage] = useState(10); // numero de recetas por pagina
   const indexOfLastCharacter = currentPage * foodPerPage; // 1 * 10 = 10 indice de la ultima recipe
   const indexOfFirstCharacter = indexOfLastCharacter - foodPerPage; //indice del segundo dato
-  //console.log(allFoods);
+  console.log(allFoods);
   const foodCurrent = allFoods.slice(
     //partimos las recetas en 10
     indexOfFirstCharacter,
@@ -59,7 +59,7 @@ export const Home = () => {
         {loading ? (
           <div className={styles.container}>
             <img
-            className={styles.gif}
+              className={styles.gif}
               src="https://i.pinimg.com/originals/e0/28/ac/e028ac5fbb700a5db916af575672e954.gif"
               alt=""
             />
@@ -72,7 +72,7 @@ export const Home = () => {
                   id={d.id}
                   name={d.name}
                   image={d.image}
-                  dishTypes={d.dishTypes}
+                  healthScore={d.healthScore}
                   diets={d.diets}
                 />
               </div>

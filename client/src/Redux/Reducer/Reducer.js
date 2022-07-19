@@ -60,6 +60,13 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ORDER_RECIPES:
+      if (action.payload === "all") {
+        return {
+          ...state,
+          allFoods: [...state.recipes],
+        };
+      }
+
       if (action.payload === "A-Z") {
         return {
           ...state,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getName } from "../../Redux/Action/action";
+import styles from "./search.module.css";
 
 export const SearchName = () => {
   const dispatch = useDispatch();
@@ -25,16 +26,20 @@ export const SearchName = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <input
+        className={styles.input}
         name="buscar"
-        placeholder="Buscá tu juego...."
+        placeholder="Buscá tu receta...."
         onChange={handleInputChange}
         value={input.buscar}
         autoComplete="off"
       ></input>
-      <button onClick={handleOnClick}>Buscar</button>
+      <button onClick={handleOnClick} className={styles.buscar}>
+        Buscar
+      </button>
       <button
+        className={styles.cargar}
         onClick={() => {
           window.location.reload();
         }}

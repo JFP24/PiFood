@@ -160,7 +160,9 @@ export const CreateFood = () => {
           </div>
           <div>
             <label className={styles.label}>steps:</label>
-            <input
+            <textarea
+              cols="30"
+              rows="10"
               placeholder="Ingrese steps"
               type="text"
               name="steps"
@@ -173,7 +175,9 @@ export const CreateFood = () => {
           </div>
           <div>
             <label className={styles.label}>summary:</label>
-            <input
+            <textarea
+              cols="30"
+              rows="10"
               placeholder="Ingrese summary"
               type="text"
               name="summary"

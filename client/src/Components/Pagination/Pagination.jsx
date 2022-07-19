@@ -3,7 +3,7 @@ import styles from "./Pagination.module.css";
 
 export const Pagination = ({
   foodPerPage,
-  allRecipes,
+  allRecipes, //lenght de todas la recetas
   paginado,
   currentPage,
 }) => {
@@ -17,18 +17,22 @@ export const Pagination = ({
   return (
     <div className={styles.container}>
       <nav>
-        <ul>
+        <ul className={styles.current}>
           <button
+            className={styles.prev}
             disabled={currentPage > 1 ? false : true}
             onClick={() => paginado(currentPage - 1)}
           >
             Prev
           </button>
           {/* {pageNumbers?.map((number) => (
-            <button onClick={() => paginado(number)}>{number}</button>
+            <button className={styles.butons} onClick={() => paginado(number)}>
+              {number}
+            </button>
           ))} */}
           {currentPage} de {pageNumbers.length}
           <button
+            className={styles.next}
             disabled={currentPage < pageNumbers.length ? false : true}
             onClick={() => paginado(currentPage + 1)}
           >

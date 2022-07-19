@@ -4,3 +4,30 @@
   justify-content: space-around;
   padding-top: 25px;
 }
+
+.order {
+  background-color: bisque;
+  margin-right: 20px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 15px;
+}
+
+.healt {
+  background-color: bisque;
+  margin-right: 20px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 15px;
+}
+
+.diets {
+  background-color: bisque;
+  margin-right: 20px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 15px;
+}

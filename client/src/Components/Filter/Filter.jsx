@@ -31,12 +31,23 @@ export const Filters = () => {
   return (
     <div className={styles.container}>
       <div>
-        <select onChange={(e) => handleOrder(e)} id="select-order">
+        <select
+          className={styles.order}
+          onChange={(e) => handleOrder(e)}
+          id="select-order"
+        >
           <option value="all">Order Alphabetically</option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
-          <option value="desc">100-1</option>
-          <option value="asc">1-100</option>
+        </select>
+        <select
+          className={styles.healt}
+          onChange={(e) => handleOrder(e)}
+          id="select-order"
+        >
+          <option value="all">HealtScore</option>
+          <option value="desc">1-100</option>
+          <option value="asc">100-1</option>
         </select>
       </div>
 
@@ -44,8 +55,13 @@ export const Filters = () => {
         <SearchName />
       </div>
       <div>
-        <select onChange={(e) => handleDiets(e)} id="select-diets" cla>
-          <option value="all">All</option>
+        <select
+          className={styles.diets}
+          onChange={(e) => handleDiets(e)}
+          id="select-diets"
+          cla
+        >
+          <option value="all">Diets</option>
           {diets?.map((el) => {
             return (
               <option key={el.id} value={el.name}>
