@@ -4,7 +4,7 @@ const axios = require("axios");
 const { Diet, Recipe } = require("../db");
 const router = Router();
 router.use(express.json());
-const API_KEY = "b4660225499a45b9bb7165c54c3a45af";
+const API_KEY = "ae7dc754efbc4b27ad3d19e8aa2c65e4";
 const URL = "https://api.spoonacular.com";
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');

@@ -46,6 +46,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allFoods: action.payload,
+        filterRecipes: action.payload,
       };
 
     case FILTER_BY_DIEST:
@@ -106,7 +107,7 @@ const rootReducer = (state = initialState, action) => {
           ),
         };
       } else {
-        return { ...state, allFoods: [...state.allFoods] };
+        return { ...state.allFoods };
       }
 
     // eslint-disable-next-line no-fallthrough

@@ -49,7 +49,9 @@ export const CardDetail = () => {
               {" "}
               DishTypes:
               <br />
-              {details.dishTypes}
+              {Array.isArray(details.dishTypes)
+                ? details.dishTypes.join(" - ")
+                : details.dishTypes}
             </div>
           </div>
 

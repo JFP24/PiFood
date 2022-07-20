@@ -22,7 +22,6 @@ router.get("/recipes", async (req, res) => {
           id: data.id,
           image: data.image,
           name: data.title,
-          dishTypes: data.dishTypes,
           diets: data.diets || data.diets.map((e) => e.name),
           healthScore: data.healthScore,
         };
@@ -43,9 +42,8 @@ router.get("/recipes", async (req, res) => {
           image: e.image,
           name: e.name,
           summary: e.summary,
-          dishTypes: e.dishTypes,
-          diets: e.diets.map((e) => e.name),
-          healthScore: e.healthScore, //las dietas son un arreglo accedo a la propiedad name
+          diets: e.diets.map((e) => e.name), //las dietas son un arreglo accedo a la propiedad name
+          healthScore: e.healthScore,
         };
       });
       console.log(infoDb);
@@ -68,7 +66,7 @@ router.get("/recipes", async (req, res) => {
           {
             id: infoDb.id,
             name: infoDb.name,
-            dishTypes: infoDb.dishTypes,
+         //   dishTypes: infoDb.dishTypes,
             diets: infoDb.diets.map((e) => e.name),
             healthScore: infoDb.healthScore,
           },

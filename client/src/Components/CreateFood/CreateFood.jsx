@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postFood, getDiets } from "../../Redux/Action/action";
-import Swal from "sweetalert2";
 import styles from "./CreateFood.module.css";
 
 const validate = (input, diets) => {
@@ -50,7 +49,9 @@ export const CreateFood = () => {
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
-    setError(validate({ ...input, [e.target.name]: e.target.value }));
+    setError(
+      validate({ ...input, [e.target.name]: e.target.value }, { ...diets })
+    );
   };
 
   const addFood = {
@@ -84,28 +85,20 @@ export const CreateFood = () => {
         image: "",
       });
       setDiets([]);
-      Swal.fire({
-        icon: "success",
-        title: "Ok",
-        text: "Food create correctly!",
-      });
+      alert("Receta creada correctamente");
       navigate("/home");
+      window.location.reload();
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Tal vez te falten espacios por llena!",
-      });
+      alert("Tal vez te falten espacios por llenar");
     }
-    //window.location.reload();
   }
 
   function handeSelect(e) {
-    if (diets.length > 4) return alert("error de 5");
+    if (diets.length > 4) return alert("No puedes poner mas de 5 dietas");
     if (!diets.includes(e.target.value)) {
       setDiets([...diets, e.target.value]);
     } else {
-      alert("error");
+      alert("No puedes poner la misma dieta");
     }
   }
 
@@ -118,8 +111,9 @@ export const CreateFood = () => {
     <div className={styles.container}>
       <div className={styles.todo}>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
-          <div>
-            <label className={styles.label}>Name:</label>
+          <div className={styles.name}>
+            <div className={styles.namelabel}>Name</div>
+
             <input
               placeholder="Ingrese Name"
               type="text"
@@ -131,8 +125,8 @@ export const CreateFood = () => {
             />
             {error.name && <p className={styles.error}>{error.name}</p>}
           </div>
-          <div>
-            <label className={styles.label}>healthScore:</label>
+          <div className={styles.health}>
+            <div className={styles.healthlabel}>HealthScore</div>
             <input
               placeholder="Ingrese healthScore"
               type="number"
@@ -146,8 +140,8 @@ export const CreateFood = () => {
               <p className={styles.error}>{error.healthScore}</p>
             )}
           </div>
-          <div>
-            <label className={styles.label}>dishTypes:</label>
+          <div className={styles.dish}>
+            <div className={styles.dishlabel}>DishTypes</div>
             <input
               placeholder="Ingrese dishTypes"
               type="text"
@@ -158,23 +152,9 @@ export const CreateFood = () => {
               //    required
             />
           </div>
-          <div>
-            <label className={styles.label}>steps:</label>
-            <textarea
-              cols="30"
-              rows="10"
-              placeholder="Ingrese steps"
-              type="text"
-              name="steps"
-              value={input.steps.toLowerCase()}
-              onChange={(e) => handleChange(e)}
-              autoComplete="off"
-              //required
-            />
-            {error.steps && <p className={styles.error}>{error.steps}</p>}
-          </div>
-          <div>
-            <label className={styles.label}>summary:</label>
+
+          <div className={styles.summary}>
+            <div className={styles.summarylabel}>Summary</div>
             <textarea
               cols="30"
               rows="10"
@@ -186,10 +166,29 @@ export const CreateFood = () => {
               autoComplete="off"
               //  required
             />
-            {error.summary && <p className={styles.error}>{error.summary}</p>}
+            {error.summary && (
+              <p className={styles.errorsumary}>{error.summary}</p>
+            )}
           </div>
-          <div>
-            <label className={styles.label}>image:</label>
+          <div className={styles.steps}>
+            <div className={styles.stepslabel}>Steps</div>
+
+            <textarea
+              cols="30"
+              rows="10"
+              placeholder="Ingrese steps"
+              type="text"
+              name="steps"
+              value={input.steps.toLowerCase()}
+              onChange={(e) => handleChange(e)}
+              autoComplete="off"
+              //required
+            />
+            {error.steps && <p className={styles.errorsteps}>{error.steps}</p>}
+          </div>
+          <div className={styles.image}>
+            <div className={styles.imagelabel}>Image</div>
+
             <input
               placeholder="Ingrese image"
               type="text"
@@ -201,8 +200,8 @@ export const CreateFood = () => {
             />
           </div>
 
-          <div>
-            <label className={styles.label}>Dietas</label>
+          <div className={styles.dietas}>
+            <div className={styles.dietaslabel}>Dietas</div>
             <select name="temp" onChange={(e) => handeSelect(e)}>
               <option>Dietas</option>
               {dietas.map((e) => (
@@ -211,10 +210,10 @@ export const CreateFood = () => {
                 </option>
               ))}
             </select>
-            <div>
+            <div className={styles.diets}>
               {diets.map((e) => {
                 return (
-                  <div key={e}>
+                  <div key={e} className={styles.e}>
                     <div>
                       <p>{e}</p>
                       <button
@@ -231,7 +230,9 @@ export const CreateFood = () => {
               {error.diets && <p className={styles.error}>{error.diets}</p>}
             </div>
           </div>
-          <button type="submit">Create</button>
+          <button className={styles.create} type="submit">
+            Create
+          </button>
         </form>
       </div>
     </div>

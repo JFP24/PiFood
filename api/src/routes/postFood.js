@@ -25,7 +25,7 @@ router.post("/recipe", async (req, res) => {
     });
     await recipe.addDiet(dietsDb);
 
-    console.log(recipe);
+    //console.log(recipe);
     return res.status(202).send(recipe);
   } catch (error) {
     console.log(error);
