@@ -23,7 +23,7 @@ export const CardDetail = () => {
       {details.name ? (
         <div className={styles.info}>
           <div className={styles.info2}>
-            <h1 className={styles.name}>{details.name}</h1>
+            <h1 className={styles.name}>{details.name.toUpperCase()}</h1>
             <div>
               <img
                 className={styles.image}
@@ -58,7 +58,7 @@ export const CardDetail = () => {
           <div className={styles.info3}>
             <br />
             <h1>Sumaary</h1>
-            <div>{details.sumary}</div>
+            <div>{details.sumary || details.summary}</div>
             <br />
             <h1>Steps</h1>
             <div>{details.steps.replace(/<[^>]+>/g, "")}</div>

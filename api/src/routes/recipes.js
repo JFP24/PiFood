@@ -4,13 +4,12 @@ const axios = require("axios");
 const { Diet, Recipe } = require("../db");
 const router = Router();
 router.use(express.json());
-const API_KEY = "30bbb84e20454f608f82f0e2b6f30eb1";
+const API_KEY = "e104c6d8b285449bb0f9651d05939027";
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 router.get("/recipes", async (req, res) => {
   const { name } = req.query;
-  // console.log(req.query, "query");
   try {
     if (!name) {
       const infoApi = await axios.get(
@@ -26,7 +25,6 @@ router.get("/recipes", async (req, res) => {
           healthScore: data.healthScore,
         };
       });
-
       //traemos la informacion de la db
       let infoDb = await Recipe.findAll({
         //traigo un arreglo
@@ -35,6 +33,7 @@ router.get("/recipes", async (req, res) => {
           name: "name",
         },
       });
+      console.log(infoDb);
       //mapeo el arreglo que llega de la db y accedo a las propiedades que necesito
       let db = infoDb.map((e) => {
         return {
@@ -44,9 +43,9 @@ router.get("/recipes", async (req, res) => {
           summary: e.summary,
           diets: e.diets.map((e) => e.name), //las dietas son un arreglo accedo a la propiedad name
           healthScore: e.healthScore,
+          creado: e.creado,
         };
       });
-      console.log(infoDb);
       //concateno la informacion de la db a la api
       let allData = infoRecipes.concat(db);
       res.status(202).send(allData);
@@ -56,29 +55,16 @@ router.get("/recipes", async (req, res) => {
       //primero buscamos si tenemos en la base de datos donde el nombre coincida
       const infoDb = await Recipe.findOne({
         where: {
-          name,
+          name: name,
         },
         include: Diet,
       });
       //si coincide mandamos la informacion
       if (infoDb) {
-        let infoPokemonDb = [
-          {
-            id: infoDb.id,
-            name: infoDb.name,
-         //   dishTypes: infoDb.dishTypes,
-            diets: infoDb.diets.map((e) => e.name),
-            healthScore: infoDb.healthScore,
-          },
-        ];
-        return res.status(202).send(infoPokemonDb);
-      } else {
-        //si no coincide mandamos la inforamcion de la pi
         const api = await axios.get(
           `https://api.spoonacular.com/recipes/complexSearch?query=${name}&addRecipeInformation=true&number=10&apiKey=${API_KEY}`
         );
-        //console.log(api.data.results);
-        const infoPokemon = api.data.results.map((data) => {
+        const infoFood = api.data.results.map((data) => {
           return {
             id: data.id,
             image: data.image,
@@ -88,12 +74,38 @@ router.get("/recipes", async (req, res) => {
             healthScore: data.healthScore,
           };
         });
-        //   console.log(infoPokemon);
-        return res.status(202).send(infoPokemon);
+
+        let infoFoodDb = [
+          {
+            id: infoDb.id,
+            name: infoDb.name,
+            diets: infoDb.diets.map((e) => e.name),
+            healthScore: infoDb.healthScore,
+            image: infoDb.image,
+          },
+        ];
+        let allData = infoFoodDb.concat(infoFood);
+        res.status(202).send(allData);
+      } else {
+        const api = await axios.get(
+          `https://api.spoonacular.com/recipes/complexSearch?query=${name}&addRecipeInformation=true&number=10&apiKey=${API_KEY}`
+        );
+        console.log(api.data.results);
+        const infoFood = api.data.results.map((data) => {
+          return {
+            id: data.id,
+            image: data.image,
+            name: data.title,
+            dishTypes: data.dishTypes,
+            diets: data.diets,
+            healthScore: data.healthScore,
+          };
+        });
+        return res.status(202).send(infoFood);
       }
     }
   } catch (error) {
-    console.log(error);
+    console.log(error, "desde recipes");
   }
 });
 

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getName } from "../../Redux/Action/action";
 import styles from "./search.module.css";
+import Swal from "sweetalert2";
 
-export const SearchName = () => {
+export const SearchName = ({ paginado }) => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     buscar: "",
@@ -16,12 +17,17 @@ export const SearchName = () => {
   const handleOnClick = async (e) => {
     e.preventDefault();
     if (input.buscar) {
-      dispatch(getName(input.buscar));
+      dispatch(getName(input.buscar.toLowerCase()));
+      paginado(1);
       setInput({
         buscar: "",
       });
     } else {
-      return alert("Colocar un busqueda");
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Lo Siento, Debes colocar una busquedad",
+      });
     }
   };
 
@@ -32,7 +38,7 @@ export const SearchName = () => {
         name="buscar"
         placeholder="Buscá tu receta...."
         onChange={handleInputChange}
-        value={input.buscar}
+        value={input.buscar.toLowerCase()}
         autoComplete="off"
       ></input>
       <button onClick={handleOnClick} className={styles.buscar}>

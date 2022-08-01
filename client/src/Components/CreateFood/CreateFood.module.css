@@ -5,6 +5,7 @@
   flex-direction: column-reverse;
   min-height: calc(114vh - 88px);
   background-size: 100% 100%;
+  background-color: #b09378;
 }
 .todo {
   width: 700px;
@@ -13,12 +14,29 @@
   border-radius: 20px;
   opacity: 0.9;
   border: solid black 2px;
+  background-color: #ffd6af;
+}
+
+.button {
+  position: absolute;
+  top: 150px;
+  left: 1000px;
+  background-color: #ddb892;
+  padding: 10px;
+
+  border: solid black 3px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
 }
 .error {
-  color: rgb(129, 129, 129);
+  color: rgb(242, 0, 0);
   position: relative;
-  top: 50px;
-  right: 160px;
+  top: 40px;
+  right: 190px;
+  font-weight: 700;
 }
 
 .name {
@@ -51,7 +69,7 @@
   position: absolute;
   display: flex;
   left: 1020px;
-  bottom: 690px;
+  bottom: 660px;
 }
 
 .dishlabel {
@@ -95,7 +113,7 @@
 .image {
   position: absolute;
   display: flex;
-  bottom: 690px;
+  bottom: 660px;
 }
 .imagelabel {
   position: relative;
@@ -118,10 +136,19 @@
   left: 1050px;
   padding: 15px;
   border-radius: 15px;
+  background-color: #ddb892;
+  padding: 10px;
+
+  border: solid black 3px;
+
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .errorsumary {
-  color: black;
+  color: rgb(244, 10, 10);
   font-weight: 700;
   position: relative;
   top: 150px;
@@ -129,7 +156,7 @@
 }
 
 .errorsteps {
-  color: black;
+  color: rgb(252, 11, 11);
   font-weight: 700;
   position: relative;
   top: 150px;
@@ -161,8 +188,16 @@
 }
 
 .e {
-  border: solid 2px black;
+  border-radius: 15px;
+  border: solid 3px rgb(1, 1, 1);
   padding-left: 15px;
   padding-right: 15px;
   margin-left: 15px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 15px;
 }

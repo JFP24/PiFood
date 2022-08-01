@@ -45,7 +45,7 @@ export const Home = () => {
       </div>
 
       <div>
-        <Filters />
+        <Filters paginado={paginado} />
       </div>
       <div>
         <Pagination

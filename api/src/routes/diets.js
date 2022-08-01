@@ -4,25 +4,46 @@ const axios = require("axios");
 const { Diet, Recipe } = require("../db");
 const router = Router();
 router.use(express.json());
-const API_KEY = "ae7dc754efbc4b27ad3d19e8aa2c65e4";
+const API_KEY = "e104c6d8b285449bb0f9651d05939027";
 const URL = "https://api.spoonacular.com";
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 router.get("/diets", async (req, res) => {
+  // try {
+  //   const apiInfo = await axios.get(
+  //     `${URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+  //   );
+  //   let apiDiets = apiInfo.data.results.map((el) => el.diets);
+  //   apiDiets = [...new Set(apiDiets.flat()), "vegetarian"];
+  //   apiDiets.map((e) => {
+  //     return Diet.findOrCreate({ where: { name: e } });
+  //   });
+  //   let dataDb = await Diet.findAll();
+  //   res.status(202).send(dataDb);
+  //   console.log(apiDiets);
+  // } catch (error) {
+  //   console.log(error);
+  // }
   try {
-    const apiInfo = await axios.get(
-      `${URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
-    );
-    let apiDiets = apiInfo.data.results.map((el) => el.diets);
-    apiDiets = [...new Set(apiDiets.flat()), "vegetarian"];
-    apiDiets.map((e) => {
+    const diets = [
+      "gluten free",
+      "dairy free",
+      "lacto ovo vegetarian",
+      "vegan",
+      "paleolithic",
+      "primal",
+      "whole 30",
+      "pescatarian",
+      "ketogenic",
+      "fodmap friendly",
+      "vegetarian",
+    ];
+    diets.map((e) => {
       return Diet.findOrCreate({ where: { name: e } });
     });
-
-    let dataDb = await Diet.findAll();
-    res.status(202).send(dataDb);
-    console.log(apiDiets);
+    let allDb = await Diet.findAll();
+    res.status(202).send(allDb);
   } catch (error) {
     console.log(error);
   }

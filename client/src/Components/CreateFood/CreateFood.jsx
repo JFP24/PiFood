@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postFood, getDiets } from "../../Redux/Action/action";
 import styles from "./CreateFood.module.css";
-
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 const validate = (input, diets) => {
   let error = {};
   if (!input.name) {
@@ -85,20 +86,37 @@ export const CreateFood = () => {
         image: "",
       });
       setDiets([]);
-      alert("Receta creada correctamente");
+      Swal.fire({
+        icon: "success",
+        title: "Ok",
+        text: "Receta creada correctamente",
+      });
       navigate("/home");
-      window.location.reload();
+      // window.location.reload();
     } else {
-      alert("Tal vez te falten espacios por llenar");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Tal vez te falten espacios por llenar",
+      });
     }
   }
 
   function handeSelect(e) {
-    if (diets.length > 4) return alert("No puedes poner mas de 5 dietas");
+    if (diets.length > 4)
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No puedes poner mas de 5 dietas",
+      });
     if (!diets.includes(e.target.value)) {
       setDiets([...diets, e.target.value]);
     } else {
-      alert("No puedes poner la misma dieta");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No puedes poner la misma dieta",
+      });
     }
   }
 
@@ -110,11 +128,15 @@ export const CreateFood = () => {
   return (
     <div className={styles.container}>
       <div className={styles.todo}>
+        <Link to={"/home"}>
+          <button className={styles.button}>Back</button>
+        </Link>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
           <div className={styles.name}>
             <div className={styles.namelabel}>Name</div>
 
             <input
+              className={styles.input}
               placeholder="Ingrese Name"
               type="text"
               name="name"
@@ -128,6 +150,7 @@ export const CreateFood = () => {
           <div className={styles.health}>
             <div className={styles.healthlabel}>HealthScore</div>
             <input
+              className={styles.input}
               placeholder="Ingrese healthScore"
               type="number"
               name="healthScore"
@@ -143,6 +166,7 @@ export const CreateFood = () => {
           <div className={styles.dish}>
             <div className={styles.dishlabel}>DishTypes</div>
             <input
+              className={styles.input}
               placeholder="Ingrese dishTypes"
               type="text"
               name="dishTypes"
@@ -190,6 +214,7 @@ export const CreateFood = () => {
             <div className={styles.imagelabel}>Image</div>
 
             <input
+              className={styles.input}
               placeholder="Ingrese image"
               type="text"
               name="image"

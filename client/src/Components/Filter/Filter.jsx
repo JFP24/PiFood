@@ -8,7 +8,7 @@ import {
 import { SearchName } from "../SearchName/SearchName";
 import styles from "./Filter.module.css";
 
-export const Filters = () => {
+export const Filters = ({ paginado }) => {
   const dispatch = useDispatch();
   const diets = useSelector((state) => state.diets);
 
@@ -17,11 +17,13 @@ export const Filters = () => {
   const handleDiets = (e) => {
     e.preventDefault();
     dispatch(filterByDiets(e.target.value));
+    paginado(1);
   };
 
   const handleOrder = (e) => {
     e.preventDefault();
     dispatch(orderRecipes(e.target.value));
+    paginado(1);
   };
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export const Filters = () => {
       </div>
 
       <div>
-        <SearchName />
+        <SearchName paginado={paginado} />
       </div>
       <div>
         <select

@@ -1,0 +1,48 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  min-height: calc(114vh - 88px);
+  background-image: url("https://media-cldnry.s-nbcnews.com/image/upload/t_focal-758x379,f_auto,q_auto:best/rockcms/2022-03/plant-based-food-mc-220323-02-273c7b.jpg");
+  height: 937px;
+  background-size: 100% 100%;
+}
+
+.buton {
+  background-color: rgb(200, 210, 221);
+  padding: 20px;
+  border-radius: 10px;
+  border: solid 2px black;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+
+  position: absolute;
+  left: 950px;
+  top: 200px;
+  text-shadow: 0px 3px 3px rgba(161, 161, 161, 0.4),
+    0px -1px 1px rgba(0, 0, 0, 0.3);
+}
+.buton:hover {
+  background-color: rgb(96, 96, 96);
+  color: black;
+  transition: all 0.5s;
+}
+
+.titulo {
+  position: absolute;
+  top: 20px;
+  left: 850px;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: Arial Black;
+  font-weight: bold;
+  font-size: 60px;
+  background: #ffffff;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

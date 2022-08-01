@@ -32,7 +32,12 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING,
       },
+      creado: {
+        type: DataTypes.STRING,
+        defaultValue: "Juan",
+      },
     },
     { timestamps: true, createdAt: false, updatedAt: false }
   );
 };
+

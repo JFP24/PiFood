@@ -4,7 +4,7 @@ const axios = require("axios");
 const { Diet, Recipe } = require("../db");
 const router = Router();
 router.use(express.json());
-const API_KEY = "30bbb84e20454f608f82f0e2b6f30eb1"; // Importar todos los routers;
+const API_KEY = "e104c6d8b285449bb0f9651d05939027"; // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 router.get("/recipes/:id", async (req, res) => {
@@ -15,7 +15,7 @@ router.get("/recipes/:id", async (req, res) => {
 
       let detalisDb = {
         //informacion de detalles db
-        ID: infoDb.id,
+        id: infoDb.id,
         name: infoDb.name,
         image: infoDb.image,
         healthScore: infoDb.healthScore,
